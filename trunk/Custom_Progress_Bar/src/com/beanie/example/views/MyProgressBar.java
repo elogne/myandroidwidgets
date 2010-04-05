@@ -33,11 +33,17 @@ public class MyProgressBar extends LinearLayout implements Runnable {
 		prepareLayout();
 	}
 
+	/**
+	 * This is called when you want the dialog to be dismissed
+	 */
 	public void dismiss() {
 		stopped = true;
 		setVisibility(View.GONE);
 	}
 
+	/**
+	 * Loads the layout and sets the initial set of images
+	 */
 	private void prepareLayout() {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -49,6 +55,7 @@ public class MyProgressBar extends LinearLayout implements Runnable {
 		imageHolders.add((ImageView) view.findViewById(R.id.imgTwo));
 		imageHolders.add((ImageView) view.findViewById(R.id.imgThree));
 
+		// Prepare an array list of images to be animated
 		images = new ArrayList<String>();
 
 		images.add("progress_1");
@@ -62,6 +69,9 @@ public class MyProgressBar extends LinearLayout implements Runnable {
 		images.add("progress_9");
 	}
 
+	/**
+	 * Starts the animation thread
+	 */
 	public void startAnimation() {
 		setVisibility(View.VISIBLE);
 		animationThread = new Thread(this, "Progress");
@@ -72,6 +82,7 @@ public class MyProgressBar extends LinearLayout implements Runnable {
 	public void run() {
 		while (stopped) {
 			try {
+				// Sleep for 0.3 secs and after that change the images
 				Thread.sleep(300);
 				handler.sendEmptyMessage(0);
 			} catch (InterruptedException e) {
@@ -86,6 +97,7 @@ public class MyProgressBar extends LinearLayout implements Runnable {
 		public void handleMessage(Message msg) {
 			int currentImage = 0;
 			int nextImage = 0;
+			// Logic to change the images
 			for (ImageView imageView : imageHolders) {
 				currentImage = Integer.parseInt(imageView.getTag().toString());
 				if (currentImage < 9) {
