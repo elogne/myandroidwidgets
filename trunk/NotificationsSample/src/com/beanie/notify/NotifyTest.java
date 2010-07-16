@@ -26,19 +26,18 @@ public class NotifyTest extends Activity implements Runnable {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.main);
 
-	// Button that handles the starting and stopping of the notification
 	final Button btnSend = (Button) findViewById(R.id.btnStart);
 	btnSend.setId(0);
 	btnSend.setOnClickListener(new OnClickListener() {
 	    @Override
 	    public void onClick(View v) {
-		Button btn = (Button)v;
-		if(btn.getId() == 0){
+		Button btn = (Button) v;
+		if (btn.getId() == 0) {
 		    isStopped = false;
 		    btn.setId(1);
 		    btn.setText("Cancel notification");
 		    startNotification();
-		}else if(btn.getId() == 1){
+		} else if (btn.getId() == 1) {
 		    btn.setId(0);
 		    btn.setText("Send notification");
 		    isStopped = true;
@@ -49,33 +48,27 @@ public class NotifyTest extends Activity implements Runnable {
 
 	nManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
     }
-    
-    private void startNotification(){
-	
-	notification = new Notification();
-	
-	Intent notificationIntent = new Intent();
-	
-	PendingIntent contentIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(),
-		notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-	// We are using the custom view for our notification instead of the setLatestEventInfo method
+    private void startNotification() {
+
+	notification = new Notification();
+
+	Intent notificationIntent = new Intent();
+	// Use the UPDATE_CURRENT FLAG for this notification since, we would be
+	// changing the iconLevel of
+	PendingIntent contentIntent = PendingIntent.getActivity(this,
+		(int) System.currentTimeMillis(), notificationIntent,
+		PendingIntent.FLAG_UPDATE_CURRENT);
+
 	RemoteViews contentView = new RemoteViews(getPackageName(),
 		R.layout.notify);
 
 	notification.contentView = contentView;
-
-	// Since we do not use the setLatestEventInfo, we have to set the intent like this
 	notification.contentIntent = contentIntent;
 
-	// Set the notification type to Ongoing Event, so that you will not see the Clear button for
-	// this notification
 	notification.flags = Notification.FLAG_ONGOING_EVENT;
-	
-	// Set the notification icon, which is actually the LevelListDrawable that you have created
 	notification.icon = R.drawable.level_list;
 
-	// Set the initial iconLevel to 0
 	notification.iconLevel = 0;
 
 	nManager.notify(R.string.app_name, notification);
@@ -83,8 +76,8 @@ public class NotifyTest extends Activity implements Runnable {
 	Thread thread = new Thread(this);
 	thread.start();
     }
-    
-    private void stopNotification(){
+
+    private void stopNotification() {
 	nManager.cancel(R.string.app_name);
     }
 
@@ -104,11 +97,20 @@ public class NotifyTest extends Activity implements Runnable {
 
 	@Override
 	public void handleMessage(Message msg) {
-	    // Change the notification level as required
 	    if (notification.iconLevel < 3) {
 		notification.iconLevel++;
 	    } else {
 		notification.iconLevel = 0;
+	    }
+	    if (!isStopped) {
+		nManager.notify(R.string.app_name, notification);
+	    } else {
+		nManager.cancel(R.string.app_name);
+	    }
+	    if (!isStopped) {
+		nManager.notify(R.string.app_name, notification);
+	    } else {
+		nManager.cancel(R.string.app_name);
 	    }
 	    super.handleMessage(msg);
 	}
