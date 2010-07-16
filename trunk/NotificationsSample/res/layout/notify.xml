@@ -1,0 +1,11 @@
+<LinearLayout android:id="@+id/LinearLayout01"
+	android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content">
+	<ImageView android:id="@+id/ImageView01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:src="@drawable/icon"></ImageView>
+	<TextView android:id="@+id/TextView01" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:text="Fetching sample data from server"
+		android:gravity="center_vertical" android:textStyle="bold"
+		android:textSize="15dip" android:textColor="#FF000000"></TextView>
+</LinearLayout>
