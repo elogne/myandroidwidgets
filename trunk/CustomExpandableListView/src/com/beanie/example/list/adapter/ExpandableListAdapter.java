@@ -18,6 +18,12 @@ import android.widget.TextView;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
+    @Override
+    public boolean areAllItemsEnabled()
+    {
+        return true;
+    }
+
     private Context context;
 
     private ArrayList<String> groups;
@@ -127,7 +133,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int arg0, int arg1) {
-        return false;
+        return true;
     }
 
 }
