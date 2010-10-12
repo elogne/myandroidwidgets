@@ -9,5 +9,17 @@ public class TitleWidgetActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        // Initialize title Widget
+        TitleWidget titleWidget = (TitleWidget)findViewById(R.id.titleWidget);
+        
+        // Call the methods to change the underlying widgets
+        titleWidget.setTitle("My Custom Title");
+        
+        titleWidget.setIcon(R.drawable.icon);
+        
+        titleWidget.showProgressBar();
+        
+        titleWidget.hideProgressBar();
     }
 }
