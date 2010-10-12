@@ -1,0 +1,15 @@
+<LinearLayout android:id="@+id/LinearLayout01"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:gravity="center_vertical"
+	android:layout_height="30dip">
+	<ImageView android:id="@+id/titleIcon" android:layout_height="30dip"
+		android:layout_width="30dip" android:src="@drawable/icon"
+		android:scaleType="fitCenter"></ImageView>
+	<TextView android:layout_width="wrap_content"
+		android:layout_weight="1" android:layout_height="fill_parent"
+		android:id="@+id/titleText" android:gravity="center_vertical"
+		android:text="Custom Title" android:textStyle="bold"
+		android:paddingLeft="5dip" android:paddingRight="5dip"></TextView>
+	<ProgressBar android:layout_height="25dip"
+		android:layout_width="25dip" android:id="@+id/titleProgress"></ProgressBar>
+</LinearLayout>
