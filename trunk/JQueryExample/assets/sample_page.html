@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<script src="jquery-1.4.2.min.js">
+        </script>
+        <link href="sample_style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" language="JavaScript">
+        	function showAlert(){
+            	alert("Hi there, this is an Alert");
+        	}
+        	function jsToggle(){
+            	jQuery(".body").toggle();
+        	}
+        	function nativeToggle(){
+            	// jsinterface is the object of our JSInterface class
+            	// nativeToggle() method in turn calls the jsToggle method through the webView
+            	window.jsinterface.nativeToggle();
+        	}
+        	function exitApp(){
+            	window.jsinterface.exitApp();
+        	}
+        </script>
+	</head>
+	<body>
+	<p>
+	<div class="header">
+		This is a header
+	</div>
+	</p>
+	<p>
+	<div class="body">
+		This is the body. Your main content goes here. Click on the Toggle button to show or hide this section.
+		<img src="icon.png"></img>
+	</div>
+	</p>
+	<p>
+	<div class="controls">
+		<input type="button" value="JToggle" id="jtoggle" onclick="jsToggle()"></input>
+		<input type="button" value="NToggle" id="ntoggle" onclick="nativeToggle()"></input>
+		<input type="button" value="Exit" id="exit" onclick="exitApp()"></input>
+		<input type="button" value="Alert" id="alert" onclick="showAlert()"></input>
+	</div>
+	</p>
+	</body>
+</html>

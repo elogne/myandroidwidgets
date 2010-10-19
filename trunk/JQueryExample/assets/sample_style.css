@@ -1,0 +1,29 @@
+body{
+	font-family: Arial,Verdana,Geneva,sans-serif;
+	font-size: 12pt;
+	background-color:#FFFFFF;
+	padding: 2px;
+	margin: 0px;
+} 
+.header{ 
+	background-color:#00f;
+	padding: 5px;
+	margin: 0px;
+	-webkit-border-radius:5px;
+	color: white;
+	text-align: center;
+}
+.body{
+	background-color:#74f;
+	padding: 5px;
+	margin: 0px;
+	-webkit-border-radius:5px;
+	color: yellow;
+	text-align: left;
+}
+.controls{
+	background-color: #838;
+	padding: 5px;
+	-webkit-border-radius:5px;
+	text-align: right;
+}
