@@ -72,14 +72,13 @@ public class HomeActivity extends Activity
                     }
 
                     // Check if it is a folder
-                    if (innerFileName.charAt(innerFileName.length() - 1) == '/')
+                    if (entry.isDirectory())
                     {
                         // Its a folder, create that folder
                         innerFile.mkdirs();
                     }
                     else
                     {
-
                         // Create a file output stream
                         FileOutputStream outputStream = new FileOutputStream(innerFileName);
                         final int BUFFER = 2048;
@@ -101,6 +100,9 @@ public class HomeActivity extends Activity
                         bufferedOutputStream.close();
                     }
                     sendMessage("DONE");
+                    
+                    // Close the current entry
+                    inputStream.closeEntry();
                 }
                 inputStream.close();
                 sendMessage("-----------------------------------------------");
