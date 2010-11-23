@@ -92,7 +92,7 @@ public class HomeActivity extends Activity
                         byte[] data = new byte[BUFFER];
                         while ((count = inputStream.read(data, 0, BUFFER)) != -1)
                         {
-                            bufferedOutputStream.write(data);
+                            bufferedOutputStream.write(data, 0, count);
                         }
 
                         // Flush and close the buffers
