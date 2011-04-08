@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<com.beanie.samples.customfont.MyTextView
+		android:layout_marginTop="10dip" android:id="@+id/textView"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:text="@string/hello" android:textSize="20sp"></com.beanie.samples.customfont.MyTextView>
+
+	<com.beanie.samples.customfont.MyButton
+		android:layout_marginTop="10dip" android:id="@+id/textView"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:text="@string/hello" android:textSize="20sp"></com.beanie.samples.customfont.MyButton>
+</LinearLayout>
