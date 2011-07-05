@@ -52,6 +52,8 @@ public class PhonebookAdapter extends BaseAdapter implements OnClickListener {
 
         // Set the onClick Listener on this button
         Button btnRemove = (Button) convertView.findViewById(R.id.btnRemove);
+        btnRemove.setFocusableInTouchMode(false);
+        btnRemove.setFocusable(false);
         btnRemove.setOnClickListener(this);
         // Set the entry, so that you can capture which item was clicked and
         // then remove it
@@ -61,6 +63,7 @@ public class PhonebookAdapter extends BaseAdapter implements OnClickListener {
         btnRemove.setTag(entry);
 
         // btnRemove.setId(position);
+        
 
         return convertView;
     }
@@ -72,6 +75,11 @@ public class PhonebookAdapter extends BaseAdapter implements OnClickListener {
         // listPhonebook.remove(view.getId());
         notifyDataSetChanged();
 
+    }
+
+    private void showDialog(Phonebook entry) {
+        // Create and show your dialog
+        // Depending on the Dialogs button clicks delete it or do nothing
     }
 
 }
