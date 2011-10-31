@@ -6,6 +6,12 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
 
+/**
+ * This is used to create the floating view and optionally you could add a
+ * shadow to the floating view
+ * 
+ * @author bibek
+ */
 public class MyDragShadowBuilder extends DragShadowBuilder {
     private Drawable mShadow;
 

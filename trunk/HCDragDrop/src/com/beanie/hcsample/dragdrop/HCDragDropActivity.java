@@ -40,6 +40,8 @@ public class HCDragDropActivity extends Activity {
     }
 
     private void setupDragDropStuff() {
+
+        // Drag drop would be triggered once you long tap on a list view's item
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View v, int position, long arg3) {
@@ -51,6 +53,7 @@ public class HCDragDropActivity extends Activity {
             }
         });
 
+        // Set the Drag Listener to the drop area.
         layoutDropArea.setOnDragListener(new OnDragListener() {
 
             public boolean onDrag(View v, DragEvent event) {
@@ -77,6 +80,12 @@ public class HCDragDropActivity extends Activity {
 
     }
 
+    /**
+     * Process the drop event
+     * 
+     * @param event
+     * @return
+     */
     private boolean processDrop(DragEvent event) {
         ClipData data = event.getClipData();
         if (data != null) {
@@ -93,6 +102,12 @@ public class HCDragDropActivity extends Activity {
         return false;
     }
 
+    /**
+     * Update the Views after the drag operation is complete
+     * 
+     * @param listItem
+     * @param index
+     */
     private void updateViewsAfterDropComplete(String listItem, int index) {
         adapter1.remove(listItem);
         adapter1.notifyDataSetChanged();
@@ -100,6 +115,9 @@ public class HCDragDropActivity extends Activity {
         textView.setText(new SpannableString(listItem));
     }
 
+    /**
+     * Nothing fancy. Setup the ListView and adapter.
+     */
     private void initializeUIElements() {
         listView = (ListView) findViewById(R.id.listView);
 
@@ -125,6 +143,14 @@ public class HCDragDropActivity extends Activity {
         listView.setAdapter(adapter1);
     }
 
+    /**
+     * Check if this is the drag operation you want. There might be other
+     * clients that would be generating the drag event. Here, we check the mime
+     * type of the data
+     * 
+     * @param event
+     * @return
+     */
     private boolean processDragStarted(DragEvent event) {
         ClipDescription clipDesc = event.getClipDescription();
         if (clipDesc != null) {
